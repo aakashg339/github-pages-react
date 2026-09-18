@@ -18,15 +18,8 @@ jobs:
         name: Test
         runs-on: ubuntu-slim
         steps:
-            - name: Get the source code
-              uses: actions/checkout@v7
-            - name: Setup node
-              uses: actions/setup-node@v7
-              with:
-                node-version: '24.21.0'
-                cache: 'npm'
-            - name: Install dependencies
-              run: npm ci
+            - name: Setup Node Project
+              uses: ./.github/actions/setup-node-project
             - name: Run test
               run: npm test
 
@@ -37,15 +30,8 @@ jobs:
       outputs:
         build-artifact-id: ${{ steps.artifact-upload-step.outputs.artifact-id }}
       steps:
-        - name: Get the source code
-          uses: actions/checkout@v7
-        - name: Setup node
-          uses: actions/setup-node@v7
-          with:
-            node-version: '24.21.0'
-            cache: 'npm'
-        - name: Install dependencies
-          run: npm ci
+        - name: Setup Node Project
+          uses: ./.github/actions/setup-node-project
         - name: Create build
           run: npm run build
         - name: Upload build
