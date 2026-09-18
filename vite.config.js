@@ -4,6 +4,7 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: "/github-pages-react/",
   test: {
     environment: "jsdom",
     setupFiles: "./src/tests/setup.js",
