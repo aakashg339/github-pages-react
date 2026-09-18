@@ -18,6 +18,8 @@ jobs:
         name: Test
         runs-on: ubuntu-slim
         steps:
+            - name: Get the source code
+              uses: actions/checkout@v7
             - name: Setup Node Project
               uses: ./.github/actions/setup-node-project
             - name: Run test
@@ -30,6 +32,8 @@ jobs:
       outputs:
         build-artifact-id: ${{ steps.artifact-upload-step.outputs.artifact-id }}
       steps:
+        - name: Get the source code
+          uses: actions/checkout@v7
         - name: Setup Node Project
           uses: ./.github/actions/setup-node-project
         - name: Create build
