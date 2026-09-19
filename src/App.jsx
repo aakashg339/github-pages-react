@@ -16,7 +16,7 @@ function App() {
           <img src={viteLogo} className="vite" alt="Vite logo" />
         </div>
         <div>
-          <h1>Get started with react development. Making change to see what happens in PR.</h1>
+          <h1>Get started with react development. Making change to see what happens in PR. More changes to test.</h1>
           <p>
             Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
           </p>
