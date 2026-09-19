@@ -1,0 +1,26 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+name: Dependabot auto-approve
+on: pull_request
+
+permissions:
+  pull-requests: write
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-slim
+    if: github.event.pull_request.user.login == 'dependabot[bot]' && github.repository == 'aakashg339/github-pages-react'
+    steps:
+      - name: Show PR information
+        run: |
+          echo "PR URL: $PR_URL"
+          echo "PR author: ${{ github.event.pull_request.user.login }}"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+      - name: Approve a PR
+        run: gh pr review --approve "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
